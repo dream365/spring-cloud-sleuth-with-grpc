@@ -1,0 +1,9 @@
+server:
+  port: 8002
+
+grpc:
+  port: 6002
+
+service-c:
+  host: localhost
+  port: 6003
