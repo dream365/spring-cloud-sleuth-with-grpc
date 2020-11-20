@@ -6,7 +6,7 @@ option java_package = "com.dream365.example";
 package example;
 
 service TestService {
-  rpc getResult (GetResultRequest) returns (GetResultRequest);
+  rpc getResult (GetResultRequest) returns (GetResultResponse);
 }
 
 message GetResultRequest {

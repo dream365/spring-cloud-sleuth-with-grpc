@@ -1,0 +1,13 @@
+server:
+  port: 8001
+
+grpc:
+  port: 6001
+
+service-b:
+  host: localhost
+  port: 6002
+
+service-d:
+  host: localhost
+  port: 6004
