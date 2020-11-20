@@ -34,7 +34,7 @@ subprojects {
         plugin(Plugin.springDependencyManagement)
     }
 
-    group = "com.dream365.example"
+    group = "com.dream365"
     version = "1.0-SNAPSHOT"
 
     tasks {
