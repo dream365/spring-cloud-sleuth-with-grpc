@@ -4,6 +4,7 @@ import com.dream365.example.ReactorTestServiceGrpc
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.cloud.sleuth.instrument.grpc.GrpcManagedChannelBuilderCustomizer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -14,10 +15,15 @@ class ServiceBReactorStubConfiguration {
     lateinit var port: String
 
     @Bean
-    fun serviceBChannel(): ManagedChannel = ManagedChannelBuilder
-        .forAddress(host, port.toInt())
-        .usePlaintext()
-        .build()
+    fun serviceBChannel(tracingManagedChannelBuilderCustomizer: GrpcManagedChannelBuilderCustomizer): ManagedChannel {
+        val builder = ManagedChannelBuilder
+            .forAddress(host, port.toInt())
+            .usePlaintext()
+
+        tracingManagedChannelBuilderCustomizer.customize(builder)
+
+        return builder.build()
+    }
 
     @Bean
     fun serviceBStub(serviceBChannel: ManagedChannel): ReactorTestServiceGrpc.ReactorTestServiceStub =
@@ -32,10 +38,15 @@ class ServiceDReactorStubConfiguration {
     lateinit var port: String
 
     @Bean
-    fun serviceDChannel(): ManagedChannel = ManagedChannelBuilder
-        .forAddress(host, port.toInt())
-        .usePlaintext()
-        .build()
+    fun serviceDChannel(tracingManagedChannelBuilderCustomizer: GrpcManagedChannelBuilderCustomizer): ManagedChannel {
+        val builder = ManagedChannelBuilder
+            .forAddress(host, port.toInt())
+            .usePlaintext()
+
+        tracingManagedChannelBuilderCustomizer.customize(builder)
+
+        return builder.build()
+    }
 
     @Bean
     fun serviceDStub(serviceDChannel: ManagedChannel): ReactorTestServiceGrpc.ReactorTestServiceStub =

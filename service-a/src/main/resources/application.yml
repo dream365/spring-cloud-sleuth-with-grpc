@@ -11,3 +11,24 @@ service-b:
 service-d:
   host: localhost
   port: 6004
+
+spring:
+  application:
+    name: service-a
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1.0
+    grpc:
+      enabled: true
+    http:
+      enabled: true
+    async:
+      enabled: false
+    log:
+      slf4j:
+        enabled: true
+    reactor:
+      enabled: false
+  zipkin:
+    base-url: http://localhost:9411/

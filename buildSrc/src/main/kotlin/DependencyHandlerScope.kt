@@ -20,3 +20,7 @@ fun DependencyHandlerScope.reactorGrpcStub(
 fun DependencyHandlerScope.grpcSpringBootStarter(
     version: String = Ver.grpcSpringBootStarter
 ) = "io.github.lognet:grpc-spring-boot-starter:$version"
+
+fun DependencyHandlerScope.springCloud(
+    module: String
+) = "org.springframework.cloud:spring-cloud-starter-$module"

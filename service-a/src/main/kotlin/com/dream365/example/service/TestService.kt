@@ -18,6 +18,10 @@ class TestService(
         .getResult(buildRequest("$requestMsg->A"))
         .map { it.res }
 
+    fun getResultExceptionFromServiceB(requestMsg: String): Mono<String> = serviceBStub
+        .getResultWithException(buildRequest("$requestMsg->A"))
+        .map { it.res }
+
     private fun buildRequest(requestMsg: String) = GetResultRequest
         .newBuilder()
         .setMsg(requestMsg)
