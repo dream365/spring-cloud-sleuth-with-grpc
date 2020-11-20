@@ -54,6 +54,10 @@ subprojects {
 
         implementation(springBoot("starter-webflux"))
 
+        implementation(springCloud("sleuth:2.2.5.RELEASE"))
+        implementation(springCloud("zipkin:2.2.5.RELEASE"))
+        implementation("io.zipkin.brave:brave-instrumentation-grpc:5.9.0")
+
         protobuf(files("$rootDir/protobuf"))
     }
 
