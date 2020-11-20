@@ -6,13 +6,13 @@ option java_package = "com.dream365.example";
 package example;
 
 service TestService {
-  rpc getResult (getResultRequest) returns (getResultResponse);
+  rpc getResult (GetResultRequest) returns (GetResultRequest);
 }
 
-message getResultRequest {
+message GetResultRequest {
   string msg = 1;
 }
 
-message getResultResponse {
+message GetResultResponse {
   string res = 1;
 }
